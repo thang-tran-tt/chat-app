@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm';
 const projectID = '7700a9da-8793-41ea-928e-304c181aff74';
 
 const App = () => {
+    if (!localStorage.getItem('username')) return <LoginForm />;
     return (
         <ChatEngine
             height='100vh'
