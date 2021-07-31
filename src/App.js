@@ -3,7 +3,7 @@ import './App.css';
 import ChatFeed from './components/ChatFeed';
 import LoginForm from './components/LoginForm';
 
-const projectID='7700a9da-8793-41ea-928e-304c181aff74';
+const projectID = '7700a9da-8793-41ea-928e-304c181aff74';
 
 const App = () => {
     return (

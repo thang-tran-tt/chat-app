@@ -20,7 +20,6 @@ const MessageForm = (props) => {
 
     const handleChange = (event) => {
         setValue(event.target.value);
-
         isTyping(props, chatId);
     };
 
@@ -32,7 +31,7 @@ const MessageForm = (props) => {
         <form className="message-form" onSubmit={handleSubmit}>
             <input
                 className="message-input"
-                placeholder="Send a message ..."
+                placeholder="Type your message here"
                 value={value}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
@@ -40,7 +39,7 @@ const MessageForm = (props) => {
 
             <label htmlFor="upload-button">
                 <span className="image-button">
-                    <PictureOutlined className="picture-icon" />
+                    <PictureOutlined className="picture-icon"/>
                 </span>
             </label>
 
@@ -48,7 +47,7 @@ const MessageForm = (props) => {
                 type="file"
                 multiple={false}
                 id="upload-button"
-                style={{display:'none'}}
+                style={{display: 'none'}}
                 onChange={handleUpload.bind(this)}
             />
 
