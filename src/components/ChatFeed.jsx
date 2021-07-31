@@ -9,13 +9,13 @@ const ChatFeed = (props) => {
     const renderReadReceipts = (message, isMyMessage) =>
         chat.people.map((person, index) => person.last_read === message.id &&
             (<div
-                key={`read_${index}`}
-                className="read-receipts"
-                style={{
-                    fload: isMyMessage ? 'right' : 'left',
-                    backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
-                }}
-            />
+                    key={`read_${index}`}
+                    className="read-receipt"
+                    style={{
+                        float: isMyMessage ? 'right' : 'left',
+                        backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
+                    }}
+                />
             )
         );
 
@@ -24,7 +24,7 @@ const ChatFeed = (props) => {
 
         return keys.map((key, index) => {
                 const message = messages[key];
-                const lastMessageKey = index === 0 ? null : key[index - 1];
+                const lastMessageKey = index === 0 ? null : keys[index - 1];
                 const isMyMessage = userName === message.sender.username;
 
                 return (
@@ -34,7 +34,7 @@ const ChatFeed = (props) => {
                             {
                                 isMyMessage
                                     ? <MyMessage message={message}/>
-                                    : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
+                                    : <TheirMessage message={message} lastMessage={messages[lastMessageKey]}/>
                             }
                         </div>
                         <div className="read-receipts"
@@ -47,7 +47,7 @@ const ChatFeed = (props) => {
         );
     };
 
-    if (!chat) return <div/>;
+    if (!chat) return <div />;
 
     return (
         <div className="chat-feed">
@@ -57,11 +57,13 @@ const ChatFeed = (props) => {
                     {chat.people.map((person) => `${person.person.username}`)}
                 </div>
             </div>
+
             {renderMessages()}
-            <div style={{height:'100px'}} />
-                <div className="message-form-container">
-                    <MessageForm {...props} chatId={activeChat} />
-                </div>
+
+            <div style={{height: '100px'}}/>
+            <div className="message-form-container">
+                <MessageForm {...props} chatId={activeChat}/>
+            </div>
         </div>
     );
 };
